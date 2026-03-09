@@ -1,0 +1,11 @@
+sequenceDiagram
+  participant U as User
+  participant F as portfolio
+  participant A as portfolio-api
+  participant C as portfolio-cloud
+
+  U->>F: Submit contact or chat request
+  F->>A: POST dynamic request
+  A-->>F: Response
+  F->>C: Trigger release or subscription flow
+  C-->>A: Publish artifacts or subscription state

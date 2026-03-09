@@ -1,0 +1,22 @@
+flowchart TD
+  subgraph Frontend
+    Build["Angular build + prerender"]
+    Hosting["Static hosting"]
+  end
+
+  subgraph Runtime
+    API["Dockerized NestJS API"]
+  end
+
+  subgraph Cloud
+    Lambda["AWS Lambda functions"]
+    APIgw["HTTP API / triggers"]
+    Storage["Artifact storage"]
+  end
+
+  Build --> Hosting
+  Hosting --> API
+  Hosting --> APIgw
+  APIgw --> Lambda
+  Lambda --> Storage
+  API --> Storage

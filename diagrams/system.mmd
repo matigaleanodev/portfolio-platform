@@ -1,0 +1,6 @@
+flowchart LR
+  User --> Frontend["portfolio\nAngular frontend"]
+  Frontend --> API["portfolio-api\nNestJS API"]
+  Frontend --> Cloud["portfolio-cloud\nAWS Lambdas"]
+  API --> Cloud
+  Cloud --> Storage["R2 / release artifacts"]
