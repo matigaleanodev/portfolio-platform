@@ -1,0 +1,27 @@
+[
+  {
+    "slug": "portfolio-ecosystem",
+    "title": "Cómo funciona este portfolio",
+    "type": "architecture",
+    "source": "portfolio-ecosystem.architecture.json",
+    "artifact": "rendered/portfolio-ecosystem.html",
+    "specificationSha256": "16ad6bc702a0663d9a3d554df7e329b2f62208d667293d5a939b75e19d1a9224",
+    "artifactSha256": "47e54d61c12eb5733f5fb833b05f27d01d7de26cb0aaf3f9dca6ed154f5d2e5a",
+    "validation": {
+      "checksPassed": 9,
+      "checkCount": 9,
+      "compositionProfile": "showcase",
+      "compositionStatus": "pass",
+      "errors": 0,
+      "warnings": 0
+    },
+    "browserEvidence": "pass",
+    "visualReview": "not-requested",
+    "repository": {
+      "url": "https://github.com/matigaleanodev/portfolio.git",
+      "revision": "863498fd6c27f9c4e0305daa7cedea4b639f5bfc"
+    },
+    "preview": "portfolio-ecosystem.47e54d61c12e.png",
+    "previewSha256": "dfe93efc063a06b4d4afc08d8fa4f5ffc9205d02d502ff5fc2d12b35e50d5fe2"
+  }
+]
