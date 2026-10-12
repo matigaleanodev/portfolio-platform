@@ -1,30 +1,17 @@
 # Overview
 
-Portfolio Platform is a three-repository system for a public personal platform. It is shaped around one constraint: most of the product should behave like publishable content, while only a small part should behave like a traditional application.
+Portfolio Platform documents three independently maintained repositories. It adds no runtime service.
 
-That leads to a static-first frontend for pages and editorial material, a narrow API for truly runtime features, and a cloud layer that owns the operational work that should not leak into the public site.
+- `portfolio` (v1.3.0): Angular 21 standalone frontend, prerendered pages, blog and projects built from versioned Markdown/JSON; static hosting on Firebase.
+- `portfolio-api` (v1.3.0): NestJS 11 API for contact, chat, health and the subscription facade. It does not serve editorial content.
+- `portfolio-cloud` (v1.3.0): TypeScript and AWS SAM; six Lambdas own release processing, OG generation, notifications, subscriptions and canonical editorial knowledge publication.
 
-## Components
+## Recent changes
 
-- Public frontend: Angular standalone app with blog, landing pages, content rendering, and dynamic entrypoints.
-- Dynamic API: NestJS service for contact, chat, health checks, and public subscription facade flows.
-- Cloud automation: AWS Lambda-based services for release tasks, OG generation, subscription lifecycle, and artifact publication.
-- Shared artifacts: generated editorial JSON, release manifests, and chat knowledge objects consumed across repos.
+The frontend now includes validated Archify viewers and previews, scheduled editorial publication and bounded chat history. API chat separates local professional facts from cloud editorial context and emits operational metrics without conversation text. Cloud guards publication dates and separates private subscriber records from public media/artifacts.
 
-## Why The Split Matters
+The SAM pipeline moved to dedicated GitHub OIDC and CloudFormation execution identities with six runtime permissions boundaries. The dated operations record reports the production cutover completed on October 11; this documentation update does not perform a fresh AWS audit.
 
-The frontend is optimized for publishing and presentation.
-The API is optimized for interaction boundaries.
-The cloud layer is optimized for ownership of asynchronous and operational workflows.
+See [architecture](02-architecture.md), [remaining work](03-roadmap.md) and [evidence](04-evidence.md).
 
-This split is less about scale than about discipline: keeping each repository small enough to defend its purpose.
-
-## Data Model
-
-The platform uses a mixed data model:
-
-- Editorial content is versioned in the frontend repository as Markdown and transformed into static artifacts during build time.
-- Runtime interaction data includes contact submissions, chat requests, and subscription events.
-- Cloud-owned operational data includes subscriber records, release metadata, and published knowledge artifacts.
-
-There is no central public content database in the current architecture.
+[Español](01-overview.es.md).

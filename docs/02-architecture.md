@@ -1,33 +1,31 @@
 # Architecture
 
-The platform follows a split architecture:
+[System overview and interactive viewer](../README.md#architecture).
 
-- `portfolio` serves the public UI, blog rendering, prerendered routes, and generated content artifacts.
-- `portfolio-api` handles dynamic requests that cannot be solved statically, mainly contact, chat, health, and subscription facade endpoints.
-- `portfolio-cloud` runs event-driven workflows such as release processing, OG image generation, subscriber persistence, and chat knowledge publication.
+## Content and publication
 
-The architectural direction is static-first. Runtime APIs exist only where interactivity or external integrations require them.
+Markdown posts and project data belong to `portfolio`. Build-time content generation produces editorial JSON, prerender inputs, RSS, sitemap, `.generated/release-manifest.json` and `.generated/chat/knowledge.json`. Drafts and future dates are excluded using `America/Argentina/Buenos_Aires`; generated detail files are cleared to prevent stale publication.
 
-## Infrastructure
+GitHub Actions publishes Firebase on main pushes, manual runs and a daily schedule at 09:17 Argentina. The daily run compares the live publication-state hash and source commit to skip an unchanged frontend deployment. Cloud stages still run after successful deployment or verification of matching live content, allowing failed handoffs to retry. Scheduling is subject to GitHub delays.
 
-The platform spans two delivery modes:
+The order is build → Firebase → `process-release` → `publish-chat-knowledge`. These are CI handoffs, not browser calls to release Lambdas. `process-release` invokes `generate-og` and `notify-post`; the independent publisher writes canonical editorial knowledge to R2. All three layers reject invalid/future editorial dates. Partial recipient delivery can still cause duplicate notification emails on retry.
 
-- static hosting for the frontend output
-- containerized deployment for the NestJS API
-- AWS serverless infrastructure for automation and asynchronous workflows
+## Dynamic contract
 
-The cloud layer is infrastructure-as-code driven and remains independent from the frontend deployment lifecycle, even when both participate in the same release process.
+The browser calls `portfolio-api`: `GET /api/health`, `POST /api/contact`, `GET /api/chat/starters`, `POST /api/chat`, `POST /api/subscriptions` and `DELETE /api/subscriptions`. Subscription persistence belongs to cloud behind its facade. Contact uses Resend with validation and anti-spam controls.
 
-## Decisions
+Chat uses curated professional facts locally and canonical editorial knowledge from R2 for projects/posts. Exclusively professional questions bypass editorial loading. Editorial requests retain an unavailable response when no valid source exists. Knowledge envelopes validate content integrity; cache/TTL and contingency behavior are documented in the API. The frontend sends at most six prior turns within payload limits; the API adds no persistent conversation store. Operational metrics omit questions, answers, history and identities.
 
-- Keep portfolio content static and build-time instead of serving it through a public runtime API.
-- Limit `portfolio-api` to dynamic features only, avoiding growth into a generic content backend.
-- Make `portfolio-cloud` the owner of subscriptions and release-oriented automation.
-- Publish canonical chat knowledge from the cloud layer so runtime consumers use a single artifact source.
+## Storage and deployment
 
-## Tradeoffs
+Editorial source stays in Git. Public R2 media/artifacts and private `SUBSCRIBERS_BUCKET` are distinct; equal bucket names are rejected. Existing public subscriber records require the documented verified-copy/cutover/cleanup migration, not just an environment change.
 
-- Static content improves simplicity, SEO, and runtime cost, but requires rebuilds for editorial changes.
-- A narrow API reduces backend complexity, but pushes stronger discipline on scope boundaries.
-- A separate cloud automation layer improves ownership and deployment clarity, but adds cross-repository coordination.
-- Canonical artifact publication reduces duplication, but creates dependency on release quality and artifact integrity.
+The API is a Docker container on shared EC2 behind Cloudflare Tunnel and an unpublished Traefik entrypoint. GitHub builds GHCR images by SHA and deploys through OIDC, SSM and an allowlisted health-checking script. SSH is a recovery path, not the CI deployment contract.
+
+Cloud remains AWS SAM. `PortfolioCloudGitHubDeployRole` passes the dedicated `PortfolioCloudCloudFormationExecutionRole`; six runtime roles use `PortfolioCloudRuntimeBoundary`. Production deployment validates account/role/region and supports reviewed changesets. The October 11 record reports UPDATE_COMPLETE, removal of the migration gate and retirement of `cloud_actions` permissions/trust Allow while retaining the role for audit. These are dated observations, not a live-state assertion.
+
+## Decisions and tradeoffs
+
+Static content reduces runtime dependencies but needs rebuilds. Separate API/cloud ownership keeps contracts explicit but requires compatible releases. Private subscriber storage reduces exposure but needs a controlled migration. Retryable release stages improve recovery but do not provide per-recipient email deduplication. [Evidence and recovery references](04-evidence.md).
+
+[Español](02-architecture.es.md).
