@@ -1,0 +1,15 @@
+# Roadmap
+
+## Base entregada
+
+La versión 1.3.0 incorpora diagramas editoriales Archify, publicación programada con guardas de fecha, historial acotado del chat, contexto profesional curado y métricas sin texto de conversaciones. El almacenamiento privado de suscriptores y las herramientas de migración están implementados. El registro operativo fechado informa que terminó el corte SAM OIDC de producción y la retirada del rol legado.
+
+## Pendientes
+
+- Validar la primera publicación programada con página/índice/RSS públicos, resultados cloud y recuperación; configurar el cron no demuestra una ejecución diaria completada.
+- Mantener cobertura conjunta de contratos frontend/API/cloud y knowledge; observar frescura, TTL y fallback según la documentación de la API.
+- Seguir el resultado de la migración de suscriptores privados por separado del código preparado; conservar copias verificadas y recuperación hasta confirmar el corte.
+- Mejorar recuperación de notificaciones sin afirmar idempotencia por destinatario; los envíos parciales pueden duplicar correos.
+- Mantener comprobantes de diagramas y documentación bilingüe alineados; continuar mejoras editoriales y UX dentro de los límites actuales.
+
+[English](03-roadmap.md).

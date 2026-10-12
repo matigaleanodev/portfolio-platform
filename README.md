@@ -32,17 +32,12 @@ If you open the code repositories independently, each one is understandable. Wha
 
 ## Architecture
 
-```mermaid
-flowchart LR
-  User --> Frontend[portfolio]
-  Frontend --> API[portfolio-api]
-  Frontend --> Cloud[portfolio-cloud]
-  API --> Cloud
-  Cloud --> R2[Cloud Storage / Artifacts]
-```
+[![Architecture / Arquitectura](diagrams/rendered/portfolio-ecosystem.47e54d61c12e.png)](https://matiasgaleano.dev/diagrams/portfolio-ecosystem.html)
 
 ## Docs
 
 - [Overview](docs/01-overview.md)
 - [Architecture](docs/02-architecture.md)
 - [Roadmap](docs/03-roadmap.md)
+
+[Sources and maintenance](diagrams/README.md) · [Evidence](docs/04-evidence.md)

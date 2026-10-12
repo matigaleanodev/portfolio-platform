@@ -32,17 +32,12 @@ Si abrís los repos de código por separado, cada uno se entiende. Lo que agrega
 
 ## Arquitectura
 
-```mermaid
-flowchart LR
-  User --> Frontend[portfolio]
-  Frontend --> API[portfolio-api]
-  Frontend --> Cloud[portfolio-cloud]
-  API --> Cloud
-  Cloud --> R2[Cloud Storage / Artifacts]
-```
+[![Architecture / Arquitectura](diagrams/rendered/portfolio-ecosystem.47e54d61c12e.png)](https://matiasgaleano.dev/diagrams/portfolio-ecosystem.html)
 
 ## Docs
 
-- [Overview](docs/01-overview.md)
-- [Architecture](docs/02-architecture.md)
-- [Roadmap](docs/03-roadmap.md)
+- [Overview](docs/01-overview.es.md)
+- [Architecture](docs/02-architecture.es.md)
+- [Roadmap](docs/03-roadmap.es.md)
+
+[Fuentes y mantenimiento](diagrams/README.es.md) · [Evidencia](docs/04-evidence.es.md)
