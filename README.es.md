@@ -14,8 +14,11 @@ Portfolio Platform documenta cómo funciona el portfolio como sistema de product
 ## Repositorios de Código
 
 - [`portfolio`](https://github.com/matigaleanodev/portfolio) -> frontend Angular standalone y blog
-- [`portfolio-api`](https://github.com/matigaleanodev/portfolio-api) -> API NestJS para contacto, chat y fachada de suscripciones
+- [`portfolio-api-cloud`](https://github.com/matigaleanodev/portfolio-api-cloud) -> implementación activa CDK/Lambda
+- [`portfolio-api`](https://github.com/matigaleanodev/portfolio-api) -> espejo NestJS/EC2 intercambiable para recuperación
 - [`portfolio-cloud`](https://github.com/matigaleanodev/portfolio-cloud) -> servicios serverless en AWS para automatizacion de releases y ownership de suscripciones
+
+La API pública es un solo elemento lógico con dos implementaciones y los mismos seis contratos. **CDK/Lambda está activa** en `api.matiasgaleano.dev`; NestJS/EC2 se conserva como espejo para recuperación. El esquema representa ese único elemento, sin tráfico duplicado.
 
 ## Por Qué Existe Este Repo
 
@@ -32,7 +35,7 @@ Si abrís los repos de código por separado, cada uno se entiende. Lo que agrega
 
 ## Arquitectura
 
-[![Architecture / Arquitectura](diagrams/rendered/portfolio-ecosystem.47e54d61c12e.png)](https://matiasgaleano.dev/diagrams/portfolio-ecosystem.html)
+[![Architecture / Arquitectura](diagrams/rendered/portfolio-ecosystem.543aa6e04718.png)](diagrams/rendered/portfolio-ecosystem.html)
 
 ## Docs
 

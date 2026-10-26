@@ -1,27 +1,24 @@
 # Evidence and scope
 
-Documentation review on October 12, 2026. Local code/documentation was compared with main SHAs queried from GitHub. Local identity-control commits were cross-checked against current main workflows. This task did not access AWS, deploy applications or validate production user flows.
+Documentation update on 2026-10-26. Local code and versioned production records were checked; the inspected revisions exist on GitHub. No deployments or new AWS audit were performed.
 
-## Main revisions
+## Inspected revisions
 
-- [portfolio @ 34856adee211](https://github.com/matigaleanodev/portfolio/tree/34856adee211f57ddb32a8573b9af9578d73235b)
-- [portfolio-api @ 7d535b571380](https://github.com/matigaleanodev/portfolio-api/tree/7d535b5713807a28081523c573445320bf1ad42e)
-- [portfolio-cloud @ bdc1510dbc8d](https://github.com/matigaleanodev/portfolio-cloud/tree/bdc1510dbc8dca8765a69d278f65aa3ce6e7902b)
+- [portfolio @ 3893a5d0ae03](https://github.com/matigaleanodev/portfolio/tree/3893a5d0ae036b152762975e8ae2a91a40d4d693)
+- [portfolio-api @ a0ef80fa9f82](https://github.com/matigaleanodev/portfolio-api/tree/a0ef80fa9f82d1cea5a31425a63ab0a344338c56)
+- [portfolio-api-cloud @ 17d4af9c40e2](https://github.com/matigaleanodev/portfolio-api-cloud/tree/17d4af9c40e217797122f3bb7c11968959daf720)
+- [portfolio-cloud @ 4c0b1735dde0](https://github.com/matigaleanodev/portfolio-cloud/tree/4c0b1735dde0759a9dbef5625aae7788386e9210)
 
-## Sources
+## Implementations of the same API
 
-- [portfolio/Docs/scheduled-publication.md](https://github.com/matigaleanodev/portfolio/blob/34856adee211f57ddb32a8573b9af9578d73235b/Docs/scheduled-publication.md)
-- [portfolio/Docs/architecture-diagrams.md](https://github.com/matigaleanodev/portfolio/blob/34856adee211f57ddb32a8573b9af9578d73235b/Docs/architecture-diagrams.md)
-- [portfolio-api/docs/assistant-profile-audit.md](https://github.com/matigaleanodev/portfolio-api/blob/7d535b5713807a28081523c573445320bf1ad42e/docs/assistant-profile-audit.md)
-- [portfolio-api/docs/chat-audit.md](https://github.com/matigaleanodev/portfolio-api/blob/7d535b5713807a28081523c573445320bf1ad42e/docs/chat-audit.md)
-- [portfolio-cloud/Docs/architecture.md](https://github.com/matigaleanodev/portfolio-cloud/blob/bdc1510dbc8dca8765a69d278f65aa3ce6e7902b/Docs/architecture.md)
-- [portfolio-cloud/Docs/subscriber-migration.md](https://github.com/matigaleanodev/portfolio-cloud/blob/bdc1510dbc8dca8765a69d278f65aa3ce6e7902b/Docs/subscriber-migration.md)
-- [portfolio-cloud/.github/workflows/deploy.yml](https://github.com/matigaleanodev/portfolio-cloud/blob/bdc1510dbc8dca8765a69d278f65aa3ce6e7902b/.github/workflows/deploy.yml)
-- [Workspace: AWS 2026-10-11](https://github.com/matigaleanodev/workspace/blob/2d808eb/Docs/operations/aws-access-2026-10-11.md)
-- [Workspace: architecture](https://github.com/matigaleanodev/workspace/blob/2d808eb/Docs/architecture.md)
+[Production configuration](https://github.com/matigaleanodev/portfolio-api-cloud/blob/17d4af9c40e217797122f3bb7c11968959daf720/Docs/production.md), the [production record](https://github.com/matigaleanodev/portfolio-api-cloud/blob/17d4af9c40e217797122f3bb7c11968959daf720/Docs/production-rollout.md) and release [v1.0.0](https://github.com/matigaleanodev/portfolio-api-cloud/releases/tag/v1.0.0) document the active Lambda, six compatible contracts, domain cutover and retained NestJS/EC2 implementation.
 
-## Limits and maintenance
+The diagram uses one API node for the interchangeable implementations, marking CDK/Lambda active. Viewer sources are pinned to `portfolio-api-cloud` at `17d4af9c40e217797122f3bb7c11968959daf720`. `manifest.json` identifies the exact JSON, HTML and PNG and their checks. Local regeneration does not imply publishing the new version on the website.
 
-Workspace operations reports are dated historical evidence, not a certification of current live state. Diagrams retain their original revisions in manifest.json, predating this documentation review. JSON/HTML/PNG hashes, local links and Mermaid removal were checked; both previews were visually inspected. Diagrams were not regenerated and application suites were not rerun.
+Regeneration passed all nine Archify showcase checks without errors or warnings and the Chromium check. The PNG preview was visually inspected; that review is separate from the automatic receipt's `visualReview` field.
+
+## Maintenance
+
+Regenerate from `portfolio/content/diagrams` and synchronize specification, HTML, PNG and manifest. Retain one logical API without duplicate traffic or expanded cloud ownership. The roadmap distinguishes pending Middy 1.1.0 work from current architecture.
 
 [Español](04-evidence.es.md).
