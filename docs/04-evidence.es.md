@@ -1,27 +1,24 @@
 # Evidencia y alcance
 
-Revisión documental del 12/10/2026. Se contrastaron código/documentación local y SHA de main consultados en GitHub. Los commits locales de controles de identidad se cotejaron con workflows actuales de main. Esta tarea no accedió a AWS, ejecutó despliegues ni validó flujos de usuarios en producción.
+Actualización documental del 26/10/2026. Se contrastaron código local y documentos productivos versionados; las revisiones inspeccionadas existen en GitHub. No se ejecutaron despliegues ni una auditoría nueva de AWS.
 
-## Revisiones de main
+## Revisiones inspeccionadas
 
-- [portfolio @ 34856adee211](https://github.com/matigaleanodev/portfolio/tree/34856adee211f57ddb32a8573b9af9578d73235b)
-- [portfolio-api @ 7d535b571380](https://github.com/matigaleanodev/portfolio-api/tree/7d535b5713807a28081523c573445320bf1ad42e)
-- [portfolio-cloud @ bdc1510dbc8d](https://github.com/matigaleanodev/portfolio-cloud/tree/bdc1510dbc8dca8765a69d278f65aa3ce6e7902b)
+- [portfolio @ 3893a5d0ae03](https://github.com/matigaleanodev/portfolio/tree/3893a5d0ae036b152762975e8ae2a91a40d4d693)
+- [portfolio-api @ a0ef80fa9f82](https://github.com/matigaleanodev/portfolio-api/tree/a0ef80fa9f82d1cea5a31425a63ab0a344338c56)
+- [portfolio-api-cloud @ 17d4af9c40e2](https://github.com/matigaleanodev/portfolio-api-cloud/tree/17d4af9c40e217797122f3bb7c11968959daf720)
+- [portfolio-cloud @ 4c0b1735dde0](https://github.com/matigaleanodev/portfolio-cloud/tree/4c0b1735dde0759a9dbef5625aae7788386e9210)
 
-## Fuentes
+## Implementaciones de la misma API
 
-- [portfolio/Docs/scheduled-publication.es.md](https://github.com/matigaleanodev/portfolio/blob/34856adee211f57ddb32a8573b9af9578d73235b/Docs/scheduled-publication.es.md)
-- [portfolio/Docs/architecture-diagrams.es.md](https://github.com/matigaleanodev/portfolio/blob/34856adee211f57ddb32a8573b9af9578d73235b/Docs/architecture-diagrams.es.md)
-- [portfolio-api/docs/assistant-profile-audit.es.md](https://github.com/matigaleanodev/portfolio-api/blob/7d535b5713807a28081523c573445320bf1ad42e/docs/assistant-profile-audit.es.md)
-- [portfolio-api/docs/chat-audit.es.md](https://github.com/matigaleanodev/portfolio-api/blob/7d535b5713807a28081523c573445320bf1ad42e/docs/chat-audit.es.md)
-- [portfolio-cloud/Docs/architecture.es.md](https://github.com/matigaleanodev/portfolio-cloud/blob/bdc1510dbc8dca8765a69d278f65aa3ce6e7902b/Docs/architecture.es.md)
-- [portfolio-cloud/Docs/subscriber-migration.es.md](https://github.com/matigaleanodev/portfolio-cloud/blob/bdc1510dbc8dca8765a69d278f65aa3ce6e7902b/Docs/subscriber-migration.es.md)
-- [portfolio-cloud/.github/workflows/deploy.yml](https://github.com/matigaleanodev/portfolio-cloud/blob/bdc1510dbc8dca8765a69d278f65aa3ce6e7902b/.github/workflows/deploy.yml)
-- [Workspace: AWS 2026-10-11](https://github.com/matigaleanodev/workspace/blob/2d808eb/Docs/operations/aws-access-2026-10-11.es.md)
-- [Workspace: architecture](https://github.com/matigaleanodev/workspace/blob/2d808eb/Docs/architecture.es.md)
+La [configuración productiva](https://github.com/matigaleanodev/portfolio-api-cloud/blob/17d4af9c40e217797122f3bb7c11968959daf720/Docs/production.es.md), el [registro de producción](https://github.com/matigaleanodev/portfolio-api-cloud/blob/17d4af9c40e217797122f3bb7c11968959daf720/Docs/production-rollout.es.md) y la release [v1.0.0](https://github.com/matigaleanodev/portfolio-api-cloud/releases/tag/v1.0.0) documentan Lambda activa, seis contratos compatibles, corte del dominio y conservación de NestJS/EC2.
 
-## Límites y mantenimiento
+El esquema usa un nodo de API para las implementaciones intercambiables, con CDK/Lambda activa. Las fuentes del visor están fijadas a `portfolio-api-cloud` en `17d4af9c40e217797122f3bb7c11968959daf720`. `manifest.json` identifica JSON, HTML y PNG exactos y sus controles. Regenerar localmente no implica publicar la versión nueva en el sitio.
 
-Los reportes operativos del workspace son evidencia histórica fechada; no certifican el estado vivo actual. Los diagramas conservan las revisiones originales en manifest.json, anteriores a esta revisión de documentación. Se verificaron hashes de JSON/HTML/PNG, enlaces locales y ausencia de Mermaid; se inspeccionaron visualmente ambas vistas previas. No se regeneraron diagramas ni se repitieron pruebas de las aplicaciones.
+La regeneración pasó los nueve controles showcase de Archify sin errores ni advertencias y la comprobación en Chromium. La vista previa PNG fue inspeccionada visualmente; esa revisión es distinta del campo `visualReview` del recibo automático.
+
+## Mantenimiento
+
+Regenerar desde `portfolio/content/diagrams` y sincronizar especificación, HTML, PNG y manifest. Mantener una API lógica sin tráfico duplicado ni ampliar el ownership de cloud. El roadmap distingue Middy 1.1.0 pendiente de la arquitectura actual.
 
 [English](04-evidence.md).
