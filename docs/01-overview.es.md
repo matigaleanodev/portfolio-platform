@@ -10,6 +10,6 @@ El navegador consume `https://api.matiasgaleano.dev/api`. Cloudflare dirige ese 
 
 API cloud 1.0.0 mantiene una Lambda. Middy y la organización interna por responsabilidad quedan para 1.1.0; la automatización editorial sigue separada de la API pública.
 
-Ver [arquitectura](02-architecture.es.md), [roadmap](03-roadmap.es.md) y [evidencia](04-evidence.es.md).
+Ver [arquitectura](02-architecture.es.md) y [evidencia](04-evidence.es.md).
 
 [English](01-overview.md).

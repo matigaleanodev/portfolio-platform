@@ -41,6 +41,5 @@ Si abrís los repos de código por separado, cada uno se entiende. Lo que agrega
 
 - [Overview](docs/01-overview.es.md)
 - [Architecture](docs/02-architecture.es.md)
-- [Roadmap](docs/03-roadmap.es.md)
 
-[Fuentes y mantenimiento](diagrams/README.es.md) · [Evidencia](docs/04-evidence.es.md)
+[Fuentes y mantenimiento](diagrams/README.es.md) · [Fuentes](docs/04-evidence.es.md)
