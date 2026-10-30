@@ -10,6 +10,6 @@ The browser uses `https://api.matiasgaleano.dev/api`. Cloudflare routes that hos
 
 API cloud 1.0.0 retains one Lambda. Middy and responsibility-based internal organization are planned for 1.1.0; editorial automation remains separate from the public API.
 
-See [architecture](02-architecture.md), [roadmap](03-roadmap.md) and [evidence](04-evidence.md).
+See [architecture](02-architecture.md) and [evidence](04-evidence.md).
 
 [Español](01-overview.es.md).
