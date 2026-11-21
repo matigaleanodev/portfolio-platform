@@ -1,15 +1,9 @@
 # Overview
 
-Portfolio has three logical layers across four code repositories:
+[Español](01-overview.es.md)
 
-- `portfolio`: Angular frontend, editorial content and static Firebase hosting.
-- **One runtime API**: `portfolio-api-cloud` is the active TypeScript/CDK/Lambda implementation; `portfolio-api` retains the NestJS/EC2 mirror. Both provide the same six health, contact, chat and subscription-facade contracts.
-- `portfolio-cloud`: AWS SAM automation, knowledge publication and subscription/notification ownership.
+The frontend owns professional content, blog posts and build artifacts. The browser uses a single public API for health, contact, chat and subscriptions. The publication workflow hands off the release manifest and chat knowledge to editorial functions in the CDK backend.
 
-The browser uses `https://api.matiasgaleano.dev/api`. Cloudflare routes that hostname to the active CDK implementation's API Gateway. NestJS remains available for recovery by changing routing, without rewriting clients or duplicating writes.
+The NestJS API and AWS SAM editorial stack preserve separate recovery paths for HTTP requests and editorial invocations.
 
-API cloud 1.0.0 retains one Lambda. Middy and responsibility-based internal organization are planned for 1.1.0; editorial automation remains separate from the public API.
-
-See [architecture](02-architecture.md) and [evidence](04-evidence.md).
-
-[Español](01-overview.es.md).
+[Architecture](02-architecture.md)
