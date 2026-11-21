@@ -1,27 +1,17 @@
 [
   {
     "slug": "portfolio-ecosystem",
-    "title": "Cómo funciona este portfolio",
+    "title": "Portfolio · sitio estático, API y publicación editorial",
     "type": "architecture",
     "source": "portfolio-ecosystem.architecture.json",
     "artifact": "rendered/portfolio-ecosystem.html",
-    "specificationSha256": "0dd4ac4c8982f05478ce069c2a240546c4cc9a3e86f2037db7baeb79b8f3bdc0",
-    "artifactSha256": "543aa6e04718fb1ba0f8a0f61d42cd2bf9c5d3d1ad2b380f8d17a13573ca5aba",
-    "preview": "portfolio-ecosystem.543aa6e04718.png",
-    "previewSha256": "9d86450587891310e62f4e3bd27bbb3534f75c27e1474e361942937e439a9e2e",
-    "validation": {
-      "checksPassed": 9,
-      "checkCount": 9,
-      "compositionProfile": "showcase",
-      "compositionStatus": "pass",
-      "errors": 0,
-      "warnings": 0
-    },
-    "browserEvidence": "pass",
-    "visualReview": "not-requested",
+    "preview": "rendered/portfolio-ecosystem.png",
+    "specificationSha256": "5f5cb1d2366b0286ce0b32ea41b668d000ef775bfbeb27fa8c011e8b2ba6cca7",
+    "artifactSha256": "0b164f188a8a01a3f4c2757342021ef66354a8e677b686793e3d22d5a07c4a5f",
+    "previewSha256": "1233e8c91e699e5d960f22f4c1f6663fd45668fecb14f4aeeff68acfaafb985b",
     "repository": {
       "url": "https://github.com/matigaleanodev/portfolio-api-cloud.git",
-      "revision": "17d4af9c40e217797122f3bb7c11968959daf720"
+      "revision": "cbf2383b8b29556754f68e273b7a8ef664f35a36"
     }
   }
 ]

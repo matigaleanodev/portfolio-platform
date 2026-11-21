@@ -1,45 +1,20 @@
 # Portfolio Platform
 
-[🇬🇧 English](README.md) | [🇪🇸 Español](README.es.md)
+[English](README.md)
 
-Portfolio Platform documenta cómo funciona el portfolio como sistema de producto, no solo como sitio web: contenido editorial estático, una API runtime deliberadamente acotada y workflows cloud que automatizan releases y operaciones de suscriptores.
+El portfolio entrega su contenido público como un sitio Angular estático. Un backend CDK/Lambda atiende las solicitudes dinámicas y ejecuta la publicación editorial después del build del sitio.
 
-![Angular](https://img.shields.io/badge/Angular-Standalone-DD0031?style=flat-square&logo=angular&logoColor=white)
-![NestJS](https://img.shields.io/badge/NestJS-API-E0234E?style=flat-square&logo=nestjs&logoColor=white)
-![AWS](https://img.shields.io/badge/AWS-Cloud-232F3E?style=flat-square&logo=amazonaws&logoColor=white)
-![Serverless](https://img.shields.io/badge/Serverless-Automation-FD5750?style=flat-square&logo=serverless&logoColor=white)
-![OpenAI API](https://img.shields.io/badge/OpenAI-API-412991?style=flat-square&logo=openai&logoColor=white)
-![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-CI%2FCD-2088FF?style=flat-square&logo=githubactions&logoColor=white)
+## Repositorios
 
-## Repositorios de Código
-
-- [`portfolio`](https://github.com/matigaleanodev/portfolio) -> frontend Angular standalone y blog
-- [`portfolio-api-cloud`](https://github.com/matigaleanodev/portfolio-api-cloud) -> implementación activa CDK/Lambda
-- [`portfolio-api`](https://github.com/matigaleanodev/portfolio-api) -> espejo NestJS/EC2 intercambiable para recuperación
-- [`portfolio-cloud`](https://github.com/matigaleanodev/portfolio-cloud) -> servicios serverless en AWS para automatizacion de releases y ownership de suscripciones
-
-La API pública es un solo elemento lógico con dos implementaciones y los mismos seis contratos. **CDK/Lambda está activa** en `api.matiasgaleano.dev`; NestJS/EC2 se conserva como espejo para recuperación. El esquema representa ese único elemento, sin tráfico duplicado.
-
-## Por Qué Existe Este Repo
-
-Este repositorio existe para mostrar el límite del sistema entre contenido, comportamiento runtime y automatización cloud.
-
-Si abrís los repos de código por separado, cada uno se entiende. Lo que agrega este repo es la razón de más alto nivel: por qué el sitio es static-first, por qué la API se mantiene intencionalmente pequeña y por qué los workflows de release y suscripciones viven fuera del frontend.
-
-## Foco Actual
-
-- mantener el contenido editorial versionado en el repo frontend
-- mantener el backend runtime chico y explícito
-- hacer que la automatización cloud sea dueña de los workflows de releases y suscriptores
-- documentar los contratos entre repos con suficiente claridad para poder evolucionarlos sin romperlos
+- [`portfolio`](https://github.com/matigaleanodev/portfolio) — frontend Angular, contenido Markdown y workflow de publicación
+- [`portfolio-api-cloud`](https://github.com/matigaleanodev/portfolio-api-cloud) — API HTTP principal y funciones Lambda editoriales
+- [`portfolio-api`](https://github.com/matigaleanodev/portfolio-api) — implementación HTTP NestJS de recuperación
+- [`portfolio-cloud`](https://github.com/matigaleanodev/portfolio-cloud) — implementación editorial AWS SAM de recuperación
 
 ## Arquitectura
 
-[![Architecture / Arquitectura](diagrams/rendered/portfolio-ecosystem.543aa6e04718.png)](diagrams/rendered/portfolio-ecosystem.html)
+[Resumen del sistema](docs/01-overview.es.md) · [Flujos y decisiones](docs/02-architecture.es.md) · [Fuentes técnicas](docs/04-evidence.es.md)
 
-## Docs
+[![Diagrama del sistema](diagrams/rendered/portfolio-ecosystem.png)](diagrams/rendered/portfolio-ecosystem.html)
 
-- [Overview](docs/01-overview.es.md)
-- [Architecture](docs/02-architecture.es.md)
-
-[Fuentes y mantenimiento](diagrams/README.es.md) · [Fuentes](docs/04-evidence.es.md)
+[Fuentes del diagrama](diagrams/README.es.md)
